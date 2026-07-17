@@ -15,9 +15,13 @@
       </header>
 
       <button id="send-button" class="primary" type="button">Create EPUB from this window</button>
-      <button id="library-button" class="secondary" type="button">Open EPUB library</button>
+      <div class="actions">
+        <button id="library-button" class="secondary" type="button">Open EPUB library</button>
+        <button id="copy-kobo-button" class="secondary" type="button" hidden>Copy Kobo URL</button>
+      </div>
 
       <p id="status" class="status" role="status" aria-live="polite">Checking the local companion…</p>
+      <p id="kobo-url" class="kobo-url" hidden></p>
       <p class="privacy">Local-first. No account, cloud upload, or analytics.</p>
     </main>
 

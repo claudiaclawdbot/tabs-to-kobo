@@ -5,7 +5,9 @@ const LIBRARY_URL = `${COMPANION_URL}/library`;
 
 const sendButton = document.querySelector("#send-button");
 const libraryButton = document.querySelector("#library-button");
+const copyKoboButton = document.querySelector("#copy-kobo-button");
 const statusEl = document.querySelector("#status");
+const koboUrlEl = document.querySelector("#kobo-url");
 let backendConfig = null;
 
 function setStatus(message, kind = "idle") {
@@ -87,7 +89,14 @@ async function initialize() {
     ]);
     backendConfig = config;
     const count = allTabs.filter(isSupportedTab).length;
-    setStatus(`${count} supported ${count === 1 ? "page" : "pages"} ready. Saves to ${formatSyncTarget(config.syncTarget)}.`);
+    if (config.koboLibraryUrl) {
+      copyKoboButton.hidden = false;
+      koboUrlEl.hidden = false;
+      koboUrlEl.textContent = config.koboLibraryUrl;
+    }
+
+    const koboText = config.koboLibraryUrl ? " Kobo URL is ready to copy." : "";
+    setStatus(`${count} supported ${count === 1 ? "page" : "pages"} ready. Saves to ${formatSyncTarget(config.syncTarget)}.${koboText}`);
   } catch {
     setStatus("Start the local companion with: npm run start:wifi", "error");
   }
@@ -128,5 +137,18 @@ async function sendTabs() {
 }
 
 sendButton.addEventListener("click", sendTabs);
-libraryButton.addEventListener("click", () => chrome.tabs.create({ url: LIBRARY_URL }));
+libraryButton.addEventListener("click", () => chrome.tabs.create({ url: backendConfig?.localLibraryUrl || LIBRARY_URL }));
+copyKoboButton.addEventListener("click", async () => {
+  if (!backendConfig?.koboLibraryUrl) {
+    setStatus("No Kobo URL is available yet.", "error");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(backendConfig.koboLibraryUrl);
+    setStatus("Copied the Kobo URL.", "success");
+  } catch {
+    setStatus(`Kobo URL: ${backendConfig.koboLibraryUrl}`);
+  }
+});
 initialize();

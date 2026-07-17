@@ -4,6 +4,7 @@
   "private": true,
   "description": "Turn a browser window of articles into a Kobo-ready EPUB.",
   "license": "MIT",
+  "homepage": "https://claudiaclawdbot.github.io/tabs-to-kobo/",
   "repository": {
     "type": "git",
     "url": "https://github.com/claudiaclawdbot/tabs-to-kobo.git"
@@ -24,6 +25,6 @@
     "sample": "npm --prefix server run sample",
     "package:extension": "npm --prefix server run package:extension",
     "test": "npm --prefix server test",
-    "check": "npm --prefix server run check"
+    "check": "node scripts/check-docs.cjs && npm --prefix server run check"
   }
 }

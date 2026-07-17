@@ -1,0 +1,55 @@
+name: Bug report
+description: Report something that did not work.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting a problem. Please avoid sharing private URLs, generated EPUBs, account details, or local file paths unless they are required and safe to share.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe what you expected and what happened instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Chrome extension
+        - Local companion
+        - EPUB output
+        - Kobo download page
+        - macOS service
+        - Setup or docs
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: macOS 15, Windows 11, Ubuntu 24.04
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      placeholder: node -v
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Keep the example small and use public test pages when possible.
+      placeholder: |
+        1. Start the companion with ...
+        2. Load these tabs ...
+        3. Click ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste only the lines needed to explain the issue.
+      render: text

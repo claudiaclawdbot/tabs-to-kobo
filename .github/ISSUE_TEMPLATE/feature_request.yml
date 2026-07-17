@@ -1,0 +1,37 @@
+name: Feature request
+description: Suggest a focused improvement.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+      description: Describe the user workflow or limitation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What should Tabs to Kobo do?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Chrome extension
+        - Local companion
+        - EPUB formatting
+        - Kobo transfer
+        - Installer or service
+        - Docs
+    validations:
+      required: true
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy or security impact
+      description: Note whether this needs new browser permissions, cloud services, cookies, private-network access, or new stored data.

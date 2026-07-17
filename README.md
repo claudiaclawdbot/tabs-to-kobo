@@ -4,6 +4,8 @@ Turn the readable pages in one Chrome window into a single Kobo-ready EPUB.
 
 Tabs to Kobo is local-first: a small browser extension sends tab titles and URLs to a companion running on your computer. The companion fetches the public article pages, removes page chrome and scripts, builds an EPUB, and gives your Kobo a simple same-Wi-Fi download page. There is no account, hosted backend, analytics, or automatic cloud upload.
 
+Project site: [claudiaclawdbot.github.io/tabs-to-kobo](https://claudiaclawdbot.github.io/tabs-to-kobo/)
+
 ## Why this is an extension, not a bookmarklet
 
 A bookmarklet can see only the page it is running on. It cannot safely read the other tabs in a browser window. The extension is what makes the useful one-click workflow possible without opening a localhost endpoint to arbitrary websites.
@@ -23,6 +25,12 @@ Clone the project and install the locked dependencies:
 git clone https://github.com/claudiaclawdbot/tabs-to-kobo.git
 cd tabs-to-kobo
 npm run setup
+```
+
+On macOS, you can also double-click:
+
+```txt
+macos/Install Tabs to Kobo.command
 ```
 
 Start same-Wi-Fi mode:
@@ -55,6 +63,12 @@ The [latest GitHub release](https://github.com/claudiaclawdbot/tabs-to-kobo/rele
 
 ## Keep it running on macOS
 
+For a guided restart window, double-click:
+
+```txt
+macos/Restart Tabs to Kobo.command
+```
+
 Install the companion as a per-user login service:
 
 ```sh
@@ -70,6 +84,8 @@ npm run service:uninstall
 ```
 
 The service starts at login, restarts after a crash, and writes logs under `~/Library/Logs/tabs-to-kobo/`.
+
+The Chrome popup also shows a **Copy Kobo URL** button when the companion is running in same-Wi-Fi mode.
 
 ## Optional cloud-folder output
 
@@ -147,6 +163,19 @@ npm run package:extension
 The ZIP is written to `dist/`. Generated EPUBs, local configuration, dependencies, logs, and release artifacts are ignored by Git.
 
 Contributions are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+## GitHub Pages
+
+The public site lives in `docs/` and deploys through `.github/workflows/pages.yml`.
+
+To publish it on GitHub:
+
+1. Open the repository settings on GitHub.
+2. Go to **Pages**.
+3. Set **Build and deployment** to **GitHub Actions**.
+4. Push to `main`, or run the **Pages** workflow manually.
+
+GitHub's current custom workflow docs use `actions/configure-pages@v5`, `actions/upload-pages-artifact@v4`, and `actions/deploy-pages@v4`.
 
 ## License
 

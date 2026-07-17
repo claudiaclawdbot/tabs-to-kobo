@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Tabs to Kobo turns a Chrome window of readable pages into one Kobo-ready EPUB, with a local companion and same-Wi-Fi download page.">
+    <title>Tabs to Kobo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Tabs to Kobo home">
+        <span class="brand-mark">TK</span>
+        <span>Tabs to Kobo</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#install">Install</a>
+        <a href="#daily-use">Use</a>
+        <a href="#security">Privacy</a>
+        <a href="https://github.com/claudiaclawdbot/tabs-to-kobo">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Local-first reading queue</p>
+          <h1 id="hero-title">Tabs to Kobo</h1>
+          <p class="lede">Turn every readable page in one Chrome window into a single clean EPUB for your Kobo.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="https://github.com/claudiaclawdbot/tabs-to-kobo">Get the project</a>
+            <a class="button secondary" href="#install">Read setup</a>
+          </div>
+        </div>
+
+        <div class="workflow" aria-label="Browser tabs become one Kobo EPUB">
+          <div class="browser-window">
+            <div class="tab-strip">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="article-lines">
+              <strong>Current Chrome window</strong>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="arrow">to</div>
+          <div class="epub-file">
+            <span class="file-corner"></span>
+            <strong>EPUB</strong>
+            <small>one chapter per tab</small>
+          </div>
+          <div class="arrow">to</div>
+          <div class="reader">
+            <span class="reader-screen">
+              <strong>My Books</strong>
+              <small>Saved Tabs</small>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section class="summary-band" aria-label="Project summary">
+        <div>
+          <strong>No account</strong>
+          <span>No hosted backend, OAuth, analytics, or cloud upload.</span>
+        </div>
+        <div>
+          <strong>One book</strong>
+          <span>Tabs stay in browser order and become EPUB chapters.</span>
+        </div>
+        <div>
+          <strong>Kobo BW friendly</strong>
+          <span>Use the same-Wi-Fi download page when cloud storage is not built in.</span>
+        </div>
+      </section>
+
+      <section class="section" id="install" aria-labelledby="install-title">
+        <div class="section-heading">
+          <p class="eyebrow">Setup</p>
+          <h2 id="install-title">Install once, then use the popup</h2>
+        </div>
+        <div class="steps">
+          <article>
+            <span class="step-number">1</span>
+            <h3>Install the companion</h3>
+            <p>Clone the repo and run the setup command. On macOS, double-click `macos/Install Tabs to Kobo.command` if you prefer a guided window.</p>
+            <pre><code>git clone https://github.com/claudiaclawdbot/tabs-to-kobo.git
+cd tabs-to-kobo
+npm run setup
+npm run service:install</code></pre>
+          </article>
+          <article>
+            <span class="step-number">2</span>
+            <h3>Load the browser extension</h3>
+            <p>Open Chrome's extension page, enable Developer mode, click Load unpacked, and choose the `extension` folder.</p>
+          </article>
+          <article>
+            <span class="step-number">3</span>
+            <h3>Find the Kobo URL</h3>
+            <p>Use the extension's Copy Kobo URL button, or double-click `macos/Restart Tabs to Kobo.command` to print it.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section alt" id="daily-use" aria-labelledby="daily-use-title">
+        <div class="section-heading">
+          <p class="eyebrow">Daily use</p>
+          <h2 id="daily-use-title">A small loop that stays out of the way</h2>
+        </div>
+        <ol class="use-list">
+          <li>Put the articles you want in one Chrome window.</li>
+          <li>Click Tabs to Kobo, then Create EPUB from this window.</li>
+          <li>On the Kobo, open the web browser and visit the same-Wi-Fi library URL.</li>
+          <li>Tap the newest EPUB. Kobo downloads it into My Books.</li>
+        </ol>
+      </section>
+
+      <section class="section split" aria-labelledby="fit-title">
+        <div>
+          <p class="eyebrow">Good fit</p>
+          <h2 id="fit-title">Built for window-sized reading piles</h2>
+          <p>Instapaper is better for saving single articles to a service account. Tabs to Kobo is better when you have a whole browser window that should become one offline book.</p>
+        </div>
+        <div class="comparison">
+          <article>
+            <h3>Tabs to Kobo</h3>
+            <ul>
+              <li>Creates one EPUB file</li>
+              <li>Keeps tab order</li>
+              <li>Works without a cloud account</li>
+              <li>Uses Kobo's browser on Clara BW</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Native read-later apps</h3>
+            <ul>
+              <li>Sync individual articles</li>
+              <li>Depend on a service account</li>
+              <li>May vary by Kobo model</li>
+              <li>Usually hide the final file</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="security" aria-labelledby="security-title">
+        <div class="section-heading">
+          <p class="eyebrow">Privacy</p>
+          <h2 id="security-title">The boundary is intentionally boring</h2>
+        </div>
+        <div class="security-grid">
+          <article>
+            <h3>Local build</h3>
+            <p>The extension sends tab titles and URLs only to the companion on your own computer.</p>
+          </article>
+          <article>
+            <h3>No cookies</h3>
+            <p>The companion fetches public page HTML without browser cookies or saved credentials.</p>
+          </article>
+          <article>
+            <h3>Wi-Fi downloads</h3>
+            <p>Devices on your trusted home network can list and download generated EPUBs, but cannot trigger builds.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="final-title">
+        <h2 id="final-title">Ready to try it?</h2>
+        <p>Start with the README if you want the exact commands, limitations, and troubleshooting notes.</p>
+        <a class="button primary" href="https://github.com/claudiaclawdbot/tabs-to-kobo#readme">Open the README</a>
+      </section>
+    </main>
+  </body>
+</html>

@@ -65,6 +65,12 @@ button {
   cursor: pointer;
 }
 
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
 .primary {
   color: #fff;
   background: var(--accent);
@@ -111,6 +117,18 @@ button:disabled {
 
 .status[data-kind="error"] {
   color: var(--error);
+}
+
+.kobo-url {
+  margin: -2px 0 0;
+  padding: 8px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fffdf9;
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  overflow-wrap: anywhere;
 }
 
 .privacy {

@@ -27,7 +27,9 @@ export function createApp(config) {
       version: appVersion,
       syncTarget: config.syncTarget,
       defaultBookTitle: config.defaultBookTitle,
-      maxTabs: config.maxTabs
+      maxTabs: config.maxTabs,
+      localLibraryUrl: `http://127.0.0.1:${config.port}/library`,
+      koboLibraryUrl: koboLibraryUrl(config)
     });
   });
 
@@ -174,4 +176,16 @@ function localOnlyForProtectedRoutes(req, res, next) {
   }
 
   res.status(403).json({ ok: false, error: "This endpoint is only available from this computer" });
+}
+
+function koboLibraryUrl(config) {
+  if (config.syncTarget !== "wifi" || isLoopbackHost(config.host)) {
+    return "";
+  }
+
+  return `http://${config.host}:${config.port}/library`;
+}
+
+function isLoopbackHost(host = "") {
+  return host === "127.0.0.1" || host === "localhost" || host === "0.0.0.0";
 }

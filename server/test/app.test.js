@@ -11,6 +11,8 @@ test("protected companion routes allow the extension origin and reject web origi
   const config = {
     outputDir,
     syncTarget: "local",
+    host: "127.0.0.1",
+    port: 3217,
     defaultBookTitle: "Saved Tabs",
     maxTabs: 50,
     fetchTimeoutMs: 15000,
@@ -44,6 +46,31 @@ test("protected companion routes allow the extension origin and reject web origi
     body: "not-json"
   });
   assert.equal(badBody.status, 400);
+});
+
+test("config includes library URLs for the extension", async (t) => {
+  const outputDir = await fs.mkdtemp(path.join(os.tmpdir(), "tabs-to-kobo-config-"));
+  const server = createApp({
+    outputDir,
+    syncTarget: "wifi",
+    host: "192.168.1.25",
+    port: 3217,
+    defaultBookTitle: "Saved Tabs",
+    maxTabs: 50,
+    fetchTimeoutMs: 15000,
+    maxPageBytes: 5 * 1024 * 1024,
+    maxRedirects: 5,
+    allowPrivateNetworkSources: false,
+    allowedOrigins: ["chrome-extension://", "http://127.0.0.1", "http://localhost"]
+  }).listen(0, "127.0.0.1");
+  await new Promise((resolve) => server.once("listening", resolve));
+  t.after(() => new Promise((resolve) => server.close(resolve)));
+
+  const response = await fetch(`http://127.0.0.1:${server.address().port}/config`);
+  const body = await response.json();
+
+  assert.equal(body.localLibraryUrl, "http://127.0.0.1:3217/library");
+  assert.equal(body.koboLibraryUrl, "http://192.168.1.25:3217/library");
 });
 
 test("network and library helpers keep the intended local boundary", () => {
