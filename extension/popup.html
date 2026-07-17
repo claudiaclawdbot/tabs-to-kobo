@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tabs to Kobo</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="popup">
+      <header>
+        <p class="eyebrow">READ LATER, OFFLINE</p>
+        <h1>Tabs to Kobo</h1>
+        <p class="intro">Bundle the readable pages in this window into one clean EPUB.</p>
+      </header>
+
+      <button id="send-button" class="primary" type="button">Create EPUB from this window</button>
+      <button id="library-button" class="secondary" type="button">Open EPUB library</button>
+
+      <p id="status" class="status" role="status" aria-live="polite">Checking the local companion…</p>
+      <p class="privacy">Local-first. No account, cloud upload, or analytics.</p>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

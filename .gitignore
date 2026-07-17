@@ -1,0 +1,6 @@
+server/node_modules/
+server/config.local.json
+dist/
+output/**/*.epub
+.DS_Store
+*.log

@@ -1,0 +1,29 @@
+{
+  "name": "tabs-to-kobo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn a browser window of articles into a Kobo-ready EPUB.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claudiaclawdbot/tabs-to-kobo.git"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "setup": "npm ci --prefix server",
+    "start": "npm --prefix server start",
+    "start:wifi": "npm --prefix server run start:wifi",
+    "service:install": "npm --prefix server run service:install",
+    "service:restart": "npm --prefix server run service:restart",
+    "service:status": "npm --prefix server run service:status",
+    "service:uninstall": "npm --prefix server run service:uninstall",
+    "configure:google-drive": "npm --prefix server run configure:google-drive",
+    "configure:dropbox": "npm --prefix server run configure:dropbox",
+    "sample": "npm --prefix server run sample",
+    "package:extension": "npm --prefix server run package:extension",
+    "test": "npm --prefix server test",
+    "check": "npm --prefix server run check"
+  }
+}

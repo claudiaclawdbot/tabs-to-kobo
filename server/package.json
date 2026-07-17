@@ -1,0 +1,33 @@
+{
+  "name": "kobo-tab-syncer-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Private local companion for the Tabs to Kobo browser extension.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "start:wifi": "node scripts/start-wifi.js",
+    "service:install": "node scripts/service.js install",
+    "service:restart": "node scripts/service.js restart",
+    "service:status": "node scripts/service.js status",
+    "service:uninstall": "node scripts/service.js uninstall",
+    "sample": "node scripts/sample-build.js",
+    "configure:google-drive": "node scripts/configure-cloud-output.js google-drive",
+    "configure:dropbox": "node scripts/configure-cloud-output.js dropbox",
+    "package:extension": "node scripts/package-extension.js",
+    "test": "node --test test/*.test.js",
+    "check": "node scripts/check-source.js && npm test"
+  },
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "express": "^5.1.0",
+    "jsdom": "^26.1.0",
+    "jszip": "^3.10.1",
+    "sanitize-html": "^2.17.0"
+  },
+  "devDependencies": {}
+}

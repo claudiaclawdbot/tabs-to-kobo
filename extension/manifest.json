@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Tabs to Kobo",
+  "description": "Turn the readable pages in this browser window into a Kobo-ready EPUB.",
+  "version": "1.0.0",
+  "permissions": ["tabs"],
+  "host_permissions": [
+    "http://127.0.0.1:3217/*",
+    "http://localhost:3217/*"
+  ],
+  "action": {
+    "default_title": "Create a Kobo EPUB",
+    "default_popup": "popup.html"
+  }
+}

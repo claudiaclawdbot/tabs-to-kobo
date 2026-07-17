@@ -1,0 +1,18 @@
+{
+  "host": "127.0.0.1",
+  "port": 3217,
+  "outputDir": "output",
+  "syncTarget": "local",
+  "defaultBookTitle": "Saved Tabs",
+  "includeFailedPages": true,
+  "maxTabs": 50,
+  "fetchTimeoutMs": 15000,
+  "maxPageBytes": 5242880,
+  "maxRedirects": 5,
+  "allowPrivateNetworkSources": false,
+  "allowedOrigins": [
+    "chrome-extension://",
+    "http://127.0.0.1",
+    "http://localhost"
+  ]
+}
